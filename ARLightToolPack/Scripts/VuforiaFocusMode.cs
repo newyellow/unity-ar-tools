@@ -8,7 +8,15 @@ public class VuforiaFocusMode : MonoBehaviour {
 	bool focusResult = false;
 
 	// Use this for initialization
-	void Start () {
+	IEnumerator Start () {
+
+		// wait for camera setup
+		while (!VuforiaARController.Instance.HasStarted) {
+			yield return null;
+		}
+
+		Debug.Log ("GOGO");
+
 		focusResult = Vuforia.CameraDevice.Instance.SetFocusMode (focusMode);
 	}
 
