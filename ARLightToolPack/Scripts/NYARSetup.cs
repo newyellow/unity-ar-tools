@@ -8,9 +8,6 @@ public class NYARSetup : MonoBehaviour {
 	public Camera BGCam;
 	public Material projectorMat;
 
-	public string bgLayerName;
-	public string lightLayerName;
-
 	public LayerMask projectorIgnoreLayerMask;
 	public LayerMask bgCamLayerMask;
 
@@ -53,17 +50,12 @@ public class NYARSetup : MonoBehaviour {
 		arCam.transform.localRotation = Quaternion.identity;
 
 		Camera arCamera = arCam.AddComponent<Camera> ();
-		arCamera.farClipPlane = 2000.0f;
+		arCamera.farClipPlane = 2500.0f;
 		arCamera.nearClipPlane = 0.01f;
 		arCamera.clearFlags = CameraClearFlags.Color;
 
 		CopyCameraData cameraAdjustScript = arCam.AddComponent<CopyCameraData> ();
 		cameraAdjustScript.targetCamera = BGCam;
 
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
