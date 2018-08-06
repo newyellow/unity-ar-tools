@@ -15,8 +15,15 @@ public class CopyCameraData : MonoBehaviour {
 		_cam.fieldOfView = targetCamera.fieldOfView;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public float calculateCameraFOV()
+    {
+        Vector3 topCenter = targetCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2.0f, Screen.height, 1.0f));
+        Vector3 centerCenter = targetCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 1.0f));
+
+        Vector3 frontVector = centerCenter - transform.position;
+        Vector3 frontUpVector = topCenter - transform.position;
+        float fovAngle = Vector3.Angle(frontVector, frontUpVector);
+
+        return fovAngle * 2.0f;
+    }
 }
