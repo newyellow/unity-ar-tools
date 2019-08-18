@@ -6,12 +6,25 @@ public class RenderTextureToProjector : MonoBehaviour {
 	public RenderTexture _texture;
 	public Projector _projector;
 
-	// Use this for initialization
-	void Start () {
+    public void SetupTexture(RenderTextureSizeSetting textureSize)
+    {
+        int textureWidth = Screen.width;
+        int textureHeight = Screen.height;
 
-		_texture = new RenderTexture (Screen.width, Screen.height, 16);
-		gameObject.GetComponent<Camera> ().targetTexture = _texture;
+        if(textureSize == RenderTextureSizeSetting.Half)
+        {
+            textureWidth /= 2;
+            textureHeight /= 2;
+        }
+        else if(textureSize == RenderTextureSizeSetting.Quater)
+        {
+            textureWidth /= 4;
+            textureHeight /= 4;
+        }
 
-		_projector.material.SetTexture ("_ShadowTex", _texture);
-	}
+        _texture = new RenderTexture(textureWidth, textureHeight, 16);
+        gameObject.GetComponent<Camera>().targetTexture = _texture;
+
+        _projector.material.SetTexture("_ShadowTex", _texture);
+    }
 }
