@@ -85,8 +85,8 @@ Shader "newyellow/ARLightSurface"
 	CustomEditor "ASEMaterialInspector"
 }
 /*ASEBEGIN
-Version=17800
-1927;-209;1066;641;1205.019;240.4935;1.240338;True;False
+Version=18000
+1935;52;1065;1006;1403.986;512.5114;1.582546;True;False
 Node;AmplifyShaderEditor.ScreenPosInputsNode;2;-1344,-16;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ComponentMaskNode;3;-1040,-16;Inherit;False;True;True;False;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.LightAttenuation;7;-791.6202,267.2446;Inherit;False;0;1;FLOAT;0
@@ -103,4 +103,4 @@ WireConnection;17;0;1;0
 WireConnection;17;1;12;0
 WireConnection;0;13;17;0
 ASEEND*/
-//CHKSM=C2B0A88C10B4B3963AA5F4E0A8DE1B8EDC1DC8E5
+//CHKSM=D1A55FABFDD5556D7E75E734955E452503475944
