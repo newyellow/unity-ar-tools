@@ -4,7 +4,7 @@ Shader "newyellow/UnlitShadowed"
 {
 	Properties
 	{
-		_ScreenTex("ScreenTex", 2D) = "white" {}
+		_MainTex("_MainTex", 2D) = "white" {}
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -35,8 +35,8 @@ Shader "newyellow/UnlitShadowed"
 			UnityGIInput GIData;
 		};
 
-		uniform sampler2D _ScreenTex;
-		uniform float4 _ScreenTex_ST;
+		uniform sampler2D _MainTex;
+		uniform float4 _MainTex_ST;
 
 		inline half4 LightingStandardCustomLighting( inout SurfaceOutputCustomLightingCustom s, half3 viewDir, UnityGI gi )
 		{
@@ -57,8 +57,8 @@ Shader "newyellow/UnlitShadowed"
 			float fadeDist = UnityComputeShadowFadeDistance(data.worldPos, zDist);
 			ase_lightAtten = UnityMixRealtimeAndBakedShadows(data.atten, bakedAtten, UnityComputeShadowFade(fadeDist));
 			#endif
-			float2 uv_ScreenTex = i.uv_texcoord * _ScreenTex_ST.xy + _ScreenTex_ST.zw;
-			c.rgb = ( tex2D( _ScreenTex, uv_ScreenTex ) * ase_lightAtten ).rgb;
+			float2 uv_MainTex = i.uv_texcoord * _MainTex_ST.xy + _MainTex_ST.zw;
+			c.rgb = ( tex2D( _MainTex, uv_MainTex ) * ase_lightAtten ).rgb;
 			c.a = 1;
 			return c;
 		}
@@ -80,13 +80,13 @@ Shader "newyellow/UnlitShadowed"
 }
 /*ASEBEGIN
 Version=18000
-1935;52;1065;409;1704.109;290.3761;1.626638;True;False
-Node;AmplifyShaderEditor.SamplerNode;1;-798.6279,-113.8555;Inherit;True;Property;_ScreenTex;ScreenTex;0;0;Create;True;0;0;False;0;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.LightAttenuation;7;-767.2205,161.5132;Inherit;False;0;1;FLOAT;0
+1935;-347;1065;1405;1024.951;798.4432;1.194158;True;False
+Node;AmplifyShaderEditor.SamplerNode;1;-809.3752,-113.8555;Inherit;True;Property;_MainTex;_MainTex;0;0;Create;True;0;0;False;0;-1;None;b2a68a83f72e6664bab1f47fde45bad6;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.LightAttenuation;7;-726.6193,86.28123;Inherit;False;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;17;-249.0562,25.96148;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;0,0;Float;False;True;-1;2;ASEMaterialInspector;0;0;CustomLighting;newyellow/UnlitShadowed;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;All;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.1;False;-1;0;False;-1;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 WireConnection;17;0;1;0
 WireConnection;17;1;7;0
 WireConnection;0;13;17;0
 ASEEND*/
-//CHKSM=2EA43C2E95DB88AAF8D7A0F5364EA2F6EE2A66C6
+//CHKSM=106FAEB414D0FD87EF9A64A83569BBBBBDDA919F
